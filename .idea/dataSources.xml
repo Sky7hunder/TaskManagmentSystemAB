@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3226618291">
+    <data-source source="LOCAL" name="Rails TMS_AB: development" uuid="f957958d-97bd-4e08-a7c1-6dde303f0307">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.sqlite3</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails TMS_AB: test" uuid="0791db15-2a26-459b-a050-71161dac999d">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/test.sqlite3</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>

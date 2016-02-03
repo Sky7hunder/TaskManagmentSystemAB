@@ -1,0 +1,207 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'bootstrap-datetimepicker';
+$a-color: #F08700;
+$b-color: #F49F0A;
+$c-color: #EFCA08;
+$d-color: #00A6A6;
+$e-color: #BBDEF0;
+html, body{
+  min-height: 100%;
+}
+body{
+  height: 100%;
+  h1, h2{
+    padding-left: 15px;
+    color: #F08700;
+  }
+  nav{
+    background-color: $d-color !important;
+    -webkit-box-shadow: 0 0 20px 0 rgba(20, 113, 113, 1);
+    -moz-box-shadow: 0 0 20px 0 rgba(20, 113, 113, 1);
+    box-shadow: 0 0 20px rgba(20, 113, 113, 1);
+    border: 0px  !important;
+    .navbar-brand{
+      color: white !important;
+    }
+    .navbar-brand:hover{
+      color: $e-color !important;
+    }
+    .nav{
+      .nav-email {
+        color: white;
+        padding: 15px 35px 15px 15px;
+        line-height: 20px;
+        span{
+          font-width: bold;
+        }
+      }
+      li a{
+        color: white !important;
+      }
+      li a:hover{
+        color: $e-color !important;
+      }
+    }
+  }
+  .main{
+    margin-top: 50px;
+    .btn{
+      min-width: 100px;
+    }
+    .index{
+      .new-task-btn{
+        float: right;
+        margin-right: 20px;
+        background-color: $a-color;
+        border: 0px;
+        color: white;
+        font-size: 18px;
+      }
+      .new-task-btn:hover{
+        background-color: $b-color;
+      }
+      .actions-row{
+        margin: 15px 0;
+        padding: 10px 20px;
+        background-color: $a-color;
+        -webkit-box-shadow: 0px 18px 10px -16px rgba(29, 20, 8, 1);
+        -moz-box-shadow: 0px 18px 10px -16px rgba(29, 20, 8, 1);
+        box-shadow: 0px 18px 10px -16px rgba(29, 20, 8, 1);
+        border-radius: 5px;
+        ul{
+          float: right;
+          margin: 0px;
+          li{
+            list-style: none;
+            float: left;
+            margin-right: 20px;
+          }
+          li:last-child{
+            margin-right: 0px;
+          }
+        }
+      }
+      h3{
+        text-align: center;
+        margin: 0px;
+        padding: 15px 0;
+        background-color: $a-color;
+        border-radius: 5px 5px 0 0;
+        color: white;
+      }
+      .tasks-table{
+        thead{
+          background-color: $a-color;
+          tr{
+            th{
+              border-bottom: 0px;
+              color: white;
+              font-size: 17px;
+              text-align: center;
+              a{
+                color: white;
+                font-size: 17px;
+              }
+              a:hover{
+                color: white;
+              }
+            }
+          }
+        }
+        tbody{
+          tr{
+            a{
+              color: transparent;
+              font-size: 17px;
+            }
+            td{
+              text-align: center;
+              border-top: 1px solid white;
+              input[type="checkbox"]{
+                width: 17px;
+                height: 17px;
+              }
+            }
+            td:nth-child(2){
+              a{
+                color: white;
+                font-size: 17px;
+              }
+            }
+          }
+          tr:hover{
+            a{
+              color: white;
+              font-size: 17px;
+            }
+          }
+          tr:nth-child(2n-1){
+            background-color: $b-color;
+          }
+          tr:nth-child(2n){
+            background-color: $c-color;
+          }
+        }
+      }
+    }
+    .show-task{
+      dl{
+        dt, dd{
+          font-size: 18px;
+          padding-bottom: 15px;
+        }
+      }
+    }
+    .devise-form{
+      background-color: #FFAE31;
+      padding: 15px;
+      border-radius: 5px;
+      -webkit-box-shadow: 0 0 20px 0 rgba(20, 113, 113, 1);
+      -moz-box-shadow: 0 0 20px 0 rgba(20, 113, 113, 1);
+      box-shadow: 0 6px 23px -4px rgb(187, 187, 187);
+      margin-top: 35px!important;
+      color: white;
+      h1, h2, h3{
+        color: white;
+      }
+      a{
+        color: white;
+      }
+      a:hover{
+        color: white;
+      }
+    }
+    .center {
+      margin:0 auto;
+      float:none;
+    }
+  }
+}
+@media (max-width: 768px){
+  .actions-row{
+    ul{
+      float: right;
+      margin: 0px!important;
+      width: 100%!important;
+      padding: 0px;
+      li{
+        margin-right: 0px!important;
+        width: 33.3%;
+        float: left;
+        .btn{
+          width: 100%;
+        }
+      }
+    }
+  }
+  .tasks-table{
+    tbody{
+      tr{
+        a{
+          color: white!important;
+        }
+      }
+    }
+  }
+}

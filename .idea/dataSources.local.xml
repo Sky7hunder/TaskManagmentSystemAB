@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails TMS_AB: development" uuid="f957958d-97bd-4e08-a7c1-6dde303f0307">
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Rails TMS_AB: test" uuid="0791db15-2a26-459b-a050-71161dac999d">
+      <first-sync>true</first-sync>
+    </data-source>
+  </component>
+</project>

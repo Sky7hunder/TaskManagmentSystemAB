@@ -1,0 +1,9 @@
+$('table .completed').bind('ajax:success', function() {
+  <% if @completed_task.completed == true %>
+    $('#completed_tasks tbody').append("<%= j render(partial: 'task', locals: { task: @completed_task }) %>");
+  <% else %>
+    $('#uncompleted_tasks tbody').append("<%= j render(partial: 'task', locals: { task: @completed_task }) %>");
+  <% end %>
+  $(this).closest('tr').animate({ height: 'toggle', opacity: 'toggle' }, 'slow');
+  alert('alert');
+});

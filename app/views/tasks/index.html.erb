@@ -16,60 +16,40 @@
       </ul>
     </div>
     <div class="col-xs-12 col-sm-6 table-wrap">
-      <% if @uncompleted_tasks.present? %>
-        <h3>Uncompleted tasks</h3>
-        <table class="table table-responsive tasks-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th><span><%= sort_link 'title' %></span></th>
-              <th></th>
-              <th></th>
-              <th>Complete</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @uncompleted_tasks.each do |task| %>
-            <tr data-task-id="<%= task.id %>">
-              <td><%= check_box_tag 'task_ids[]', "#{task.id}", false, id: "task_#{task.id}" %></td>
-              <td><%= link_to task.title, task %></td>
-              <td><%= link_to 'edit', edit_task_path(task) %></td>
-              <td><%= link_to 'delete', task, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_task'  %></td>
-              <td><%= link_to 'Yes', completed_task_path(task) %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-        <div class="col-xs-12 table-bottom-block"></div>
-      <% end %>
+      <h3>Uncompleted tasks</h3>
+      <table class="table table-responsive tasks-table" id="uncompleted_tasks">
+        <thead>
+          <tr>
+            <th></th>
+            <th><span><%= sort_link 'title' %></span></th>
+            <th></th>
+            <th></th>
+            <th>Complete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: 'task', collection: @uncompleted_tasks %>
+        </tbody>
+      </table>
+      <div class="col-xs-12 table-bottom-block"></div>
     </div>
     <div class="col-xs-12 col-sm-6 table-wrap">
-      <% if @completed_tasks.present? %>
-        <h3>Completed tasks</h3>
-        <table class="table table-responsive tasks-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Title</th>
-              <th></th>
-              <th></th>
-              <th>Complete</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @completed_tasks.each do |task| %>
-            <tr>
-              <td><%= check_box_tag 'task_ids[]', "#{task.id}", false, id: "task_#{task.id}" %></td>
-              <td><%= link_to task.title, task %></td>
-              <td><%= link_to 'edit', edit_task_path(task) %></td>
-              <td><%= link_to 'delete', task, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_task'  %></td>
-              <td><%= link_to 'No', completed_task_path(task) %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-        <div class="col-xs-12 table-bottom-block"></div>
-      <% end %>
+      <h3>Completed tasks</h3>
+      <table class="table table-responsive tasks-table" id="completed_tasks">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th></th>
+            <th></th>
+            <th>Complete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: 'task', collection: @completed_tasks %>
+        </tbody>
+      </table>
+      <div class="col-xs-12 table-bottom-block"></div>
     </div>
   <% end %>
 </div>

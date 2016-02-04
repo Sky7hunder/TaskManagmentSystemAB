@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   helper_method :sort_column, :sort_direction
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :completed_task]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
     tasks = current_user.tasks
@@ -46,14 +46,18 @@ class TasksController < ApplicationController
     @task.destroy
     respond_to do |format|
       format.html { redirect_to tasks_url }
-      format.js   { render layout: false }
+      format.js
     end
   end
 
   def completed_task
-    @task.completed ^= true
-    @task.save
-    redirect_to root_path
+    @completed_task = Task.find(params[:id])
+    @completed_task.completed ^= true
+    @completed_task.save
+    respond_to do |format|
+      format.html { redirect_to tasks_path }
+      format.js
+    end
   end
 
   def destroy_multiple

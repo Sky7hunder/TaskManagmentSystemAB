@@ -6,4 +6,8 @@ module TasksHelper
     icon = column == sort_column ? icon : ""
     link_to "#{title} <span class='#{icon}'></span>".html_safe, {column: column, direction: direction}
   end
+
+  def task_completed_link_text(task)
+    task.completed? ? 'No'  : 'Yes'
+  end
 end

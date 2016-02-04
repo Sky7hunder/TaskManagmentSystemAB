@@ -1,11 +1,11 @@
 <div class="index">
   <h1>My tasks</h1>
   <%= link_to 'New tast', new_task_path, class: 'btn btn-default new-task-btn' %>
-  <%= form_tag destroy_multiple_tasks_path, method: :delete do %>
+  <%= form_tag destroy_multiple_tasks_path, remote: true, method: :delete do %>
     <div class="col-xs-12 actions-row">
       <ul>
         <li>
-          <%= submit_tag "Delete selected", class: 'btn btn-default', data: {confirm: 'Are you sure?'} %>
+          <%= submit_tag "Delete selected", class: 'btn btn-default delete-multiple', data: {confirm: 'Are you sure?'} %>
         </li>
         <li>
           <a role="button" id="check-all" class='btn btn-default'>Check all</a>
@@ -15,7 +15,7 @@
         </li>
       </ul>
     </div>
-    <div class="col-xs-12 col-sm-6">
+    <div class="col-xs-12 col-sm-6 table-wrap">
       <% if @uncompleted_tasks.present? %>
         <h3>Uncompleted tasks</h3>
         <table class="table table-responsive tasks-table">
@@ -30,19 +30,20 @@
           </thead>
           <tbody>
           <% @uncompleted_tasks.each do |task| %>
-            <tr>
+            <tr data-task-id="<%= task.id %>">
               <td><%= check_box_tag 'task_ids[]', "#{task.id}", false, id: "task_#{task.id}" %></td>
               <td><%= link_to task.title, task %></td>
               <td><%= link_to 'edit', edit_task_path(task) %></td>
-              <td><%= link_to 'delete', task, method: :delete, data: {confirm: 'Are you sure?'}  %></td>
+              <td><%= link_to 'delete', task, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_task'  %></td>
               <td><%= link_to 'Yes', completed_task_path(task) %></td>
             </tr>
           <% end %>
           </tbody>
         </table>
+        <div class="col-xs-12 table-bottom-block"></div>
       <% end %>
     </div>
-    <div class="col-xs-12 col-sm-6">
+    <div class="col-xs-12 col-sm-6 table-wrap">
       <% if @completed_tasks.present? %>
         <h3>Completed tasks</h3>
         <table class="table table-responsive tasks-table">
@@ -61,13 +62,15 @@
               <td><%= check_box_tag 'task_ids[]', "#{task.id}", false, id: "task_#{task.id}" %></td>
               <td><%= link_to task.title, task %></td>
               <td><%= link_to 'edit', edit_task_path(task) %></td>
-              <td><%= link_to 'delete', task, method: :delete, data: {confirm: 'Are you sure?'}  %></td>
+              <td><%= link_to 'delete', task, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_task'  %></td>
               <td><%= link_to 'No', completed_task_path(task) %></td>
             </tr>
           <% end %>
           </tbody>
         </table>
+        <div class="col-xs-12 table-bottom-block"></div>
       <% end %>
     </div>
   <% end %>
 </div>
+

@@ -20,11 +20,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    task_params[:due_date] = task_params[:due_date].to_time.strftime("%d/%m/%Y %H:%M") if task_params[:due_date].present?
+    task_params[:due_date] = task_params[:due_date].to_time.strftime("%d/%m/%Y") if task_params[:due_date].present?
     @task = Task.new(task_params)
-
     @task.user_id = current_user.id
-
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task }
@@ -48,6 +46,7 @@ class TasksController < ApplicationController
     @task.destroy
     respond_to do |format|
       format.html { redirect_to tasks_url }
+      format.js   { render layout: false }
     end
   end
 
@@ -58,14 +57,12 @@ class TasksController < ApplicationController
   end
 
   def destroy_multiple
-
-    Task.destroy(params[:task_ids])
-
+    @destroy_tasks = params[:task_ids]
+    Task.destroy(@destroy_tasks)
     respond_to do |format|
       format.html { redirect_to tasks_path }
-      format.json { head :no_content }
+      format.js
     end
-
   end
 
   private

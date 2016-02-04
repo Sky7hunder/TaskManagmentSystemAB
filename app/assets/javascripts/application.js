@@ -15,10 +15,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require moment
-//= require bootstrap-datetimepicker
-//= require rails.validations
-//= require rails.validations.customValidators
+//= require formValidation.min
+//= require bootstrap-datepicker.min
 //= require_tree .
 
 $(document).ready(function(){
@@ -27,24 +25,58 @@ $(document).ready(function(){
             this.checked = true;
         });
     });
+
     $('#uncheck-all').click(function(event) {
         $('form :checkbox').each(function() {
             this.checked = false;
         });
     });
-    $(function () {
-        $('#datetimepicker1').datetimepicker({
-            format: 'DD/MM/YYYY HH:mm'
-        });
-    });
-    jQuery(function () {
-        jQuery('#startDate').datetimepicker({ format: 'dd/MM/yyyy hh:mm:ss' });
-        jQuery('#endDate').datetimepicker({ format: 'dd/MM/yyyy hh:mm:ss' });
-        jQuery("#startDate").on("dp.change",function (e) {
-            jQuery('#endDate').data("DateTimePicker").setMinDate(e.date);
-        });
-        jQuery("#endDate").on("dp.change",function (e) {
-            jQuery('#startDate').data("DateTimePicker").setMaxDate(e.date);
-        });
-    });
+
+    var dt = new Date();
+
+    $('#form1')
+        .formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                "task[title]": {
+                    validators: {
+                        notEmpty: {
+                            message: 'The title is required'
+                        }
+                    }
+                },
+                "task[priority]": {
+                    validators: {
+                        numeric: {
+                            message: 'The priority is number'
+                        }
+                    }
+                },
+                "task[due_date]": {
+                    validators: {
+                        notEmpty: {
+                            message: 'The start date is required'
+                        },
+                        date: {
+                            format: 'DD/MM/YYYY',
+                            min: dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear(),
+                            message: 'The start date is not valid'
+                        }
+                    }
+                }
+            }
+        })
+        .find('[name="task[due_date]"]')
+            .datepicker({
+                format: 'dd/mm/yyyy'
+            })
+            .on('changeDate', function(e) {
+                // Revalidate the field when choosing it from the datepicker
+                $('#form1').formValidation('revalidateField', 'task[due_date]');
+            })
 });

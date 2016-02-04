@@ -1,10 +1,10 @@
 class Task < ActiveRecord::Base
-  FutureDateValidator
-  ActiveModel::Validations::HelperMethods
-
   belongs_to :user
   validates :title, presence: true
   validates :priority, numericality: { only_integer: true }
-  validates_future_date :due_date
+  validate  :due_date_cannot_be_in_the_past
 
+  def due_date_cannot_be_in_the_past
+    errors.add(:due_date, "can't be in the past") if !due_date.blank? and due_date < Time.new
+  end
 end

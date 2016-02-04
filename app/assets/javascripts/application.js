@@ -7,9 +7,16 @@
 //= require bootstrap-datepicker.min
 //= require_tree .
 
+
 var ready;
 ready = function () {
     $(function() {
+        $('#actions-form').on('submit', function() {
+            $('form tr input:checkbox:checked').each(function () {
+                $(this).closest('tr').fadeOut();
+            });
+        });
+
         $('#check-all').click(function(event) {
             $('form :checkbox').each(function() {
                 this.checked = true;

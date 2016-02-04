@@ -1,3 +1,3 @@
-$('table .delete_task').bind('ajax:success', function() {
+$('table .delete_task').unbind('ajax:success').bind('ajax:success', function() {
   $(this).closest('tr').fadeOut();
 });

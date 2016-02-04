@@ -15,7 +15,7 @@ body{
   height: 100%;
   h1, h2{
     padding-left: 15px;
-    color: #F08700;
+    color: $a-color;
   }
   nav{
     background-color: $d-color !important;
@@ -154,6 +154,27 @@ body{
               background-color: $c-color;
             }
           }
+        }
+      }
+      .completed-tasks-wrap{
+        h3{
+          background-color: $d-color;
+        }
+        thead {
+          background-color: $d-color !important;
+        }
+        tbody{
+          tr:nth-child(2n-1) {
+            background-color: #0CC7C7 !important;
+          }
+          tr:nth-child(2n) {
+            background-color: #17DCDC !important;
+          }
+        }
+        .table-bottom-block{
+          height: 15px;
+          background-color: $d-color !important;
+          border-radius: 0px 0px 5px 5px;
         }
       }
       .table-bottom-block{

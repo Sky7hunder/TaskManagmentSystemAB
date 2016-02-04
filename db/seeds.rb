@@ -13,3 +13,9 @@ Task.create([{title: 'Task 1', description: 'Lorem ihfudsn jsndj jnsdjkfb jksdkj
              {title: 'Task 4', description: 'Lorem ihfudsn jsndj jnsdjkfb jksdkj njsndjf bsdjf', priority: '3', due_date: DateTime.strptime("09/01/2009 15:00", "%m/%d/%Y %H:%M"), user_id: User.last.id},
             ])
 =end
+(1..30).each do
+  Task.create([{title: 'Task 1', description: 'Lorem ihfudsn jsndj jnsdjkfb jksdkj njsndjf bsdjf', priority: '2', due_date: DateTime.strptime("09/01/2017", "%d/%m/%Y"), user_id: User.last.id}])
+end
+(1..30).each do
+  Task.create([{title: 'Task 1', description: 'Lorem ihfudsn jsndj jnsdjkfb jksdkj njsndjf bsdjf', priority: '2', due_date: DateTime.strptime("09/01/2017", "%d/%m/%Y"), user_id: User.last.id}])
+end

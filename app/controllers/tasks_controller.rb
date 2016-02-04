@@ -63,6 +63,7 @@ class TasksController < ApplicationController
   def destroy_multiple
     @destroy_tasks = params[:task_ids]
     Task.destroy(@destroy_tasks)
+    params[:task_ids].clear
     respond_to do |format|
       format.html { redirect_to tasks_path }
       format.js

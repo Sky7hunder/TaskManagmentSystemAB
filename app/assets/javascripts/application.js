@@ -73,7 +73,6 @@ ready = function () {
                     format: 'dd/mm/yyyy'
                 })
                 .on('changeDate', function(e) {
-                    // Revalidate the field when choosing it from the datepicker
                     $('#form1').formValidation('revalidateField', 'task[due_date]');
                 })
     });

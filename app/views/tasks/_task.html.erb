@@ -3,5 +3,5 @@
   <td><%= link_to task.title, task %></td>
   <td><%= link_to 'edit', edit_task_path(task) %></td>
   <td><%= link_to 'delete', task, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_task'  %></td>
-  <td><%= link_to task_completed_link_text(task), completed_task_path(task), remote: true, class: 'completed' %></td>
+  <td><%= link_to task_completed_link_text(task), completed_task_path(task), remote: true, class: 'completed', onclick: "$(this).addClass('hidden')" %></td>
 </tr>

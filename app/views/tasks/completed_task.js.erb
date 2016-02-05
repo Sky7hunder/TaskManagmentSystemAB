@@ -1,8 +1,11 @@
 $('table .completed').unbind('ajax:success').bind('ajax:success', function() {
-  $(this).closest('tr').animate({ height: 'toggle', opacity: 'toggle' }, 'slow');
-  <% if @completed_task.completed == true %>
-  $('#completed_tasks tbody').append("<%= j render(partial: 'task', locals: { task: @completed_task }) %>");
-  <% else %>
-  $('#uncompleted_tasks tbody').append("<%= j render(partial: 'task', locals: { task: @completed_task }) %>");
-  <% end %>
+  var tr = $(this).closest('tr');
+  $.when(tr.fadeOut(500))
+          .done(function() {
+            <% if @completed_task.completed == true %>
+            $('#completed_tasks tbody').append("<%= j render(partial: 'task', locals: { task: @completed_task }) %>");
+            <% else %>
+            $('#uncompleted_tasks tbody').append("<%= j render(partial: 'task', locals: { task: @completed_task }) %>");
+            <% end %>
+          });
 });

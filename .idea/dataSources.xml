@@ -5,14 +5,14 @@
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:postgresql:TMS_AB_development</jdbc-url>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails TMS_AB: test" uuid="0791db15-2a26-459b-a050-71161dac999d">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/test.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:postgresql:TMS_AB_test</jdbc-url>
       <libraries />
     </data-source>
   </component>

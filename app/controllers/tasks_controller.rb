@@ -20,7 +20,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    task_params[:due_date] = task_params[:due_date].to_time.strftime("%d/%m/%Y") if task_params[:due_date].present?
+
     @task = Task.new(task_params)
     @task.user_id = current_user.id
     respond_to do |format|

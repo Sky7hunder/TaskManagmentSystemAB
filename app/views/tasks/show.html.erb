@@ -7,7 +7,7 @@
       <dt class="col-xs-2 text-right">Priority:</dt>
       <dd class="col-xs-10"><%= @task.priority %></dd>
       <dt class="col-xs-2 text-right">Due date:</dt>
-      <dd class="col-xs-10"><%= @task.due_date.present? ? @task.due_date.strftime("%d/%m/%Y %H:%M") : '-' %></dd>
+      <dd class="col-xs-10"><%= @task.due_date.present? ? @task.due_date : '-' %></dd>
       <dt class="col-xs-2 text-right">Description:</dt>
       <dd class="col-xs-10"><%= @task.description %></dd>
     </dl>

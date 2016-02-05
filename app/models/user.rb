@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
 
   has_many :tasks
 
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   #def send_devise_notification(notification, *args)
   #  devise_mailer.send(notification, self, *args).deliver_later
   #end
